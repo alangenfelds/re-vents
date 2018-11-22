@@ -36,7 +36,7 @@ class EventListItem extends Component {
       </Segment>
       <Segment clearing>
       <span>{event.description}</span>
-        <Button as="a" color="teal" floated="right" content="View" />
+        <Button onClick={this.props.onEventEdit(event)} as="a" color="teal" floated="right" content="View" />
       </Segment>
     </Segment.Group>
     )
