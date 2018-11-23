@@ -10,7 +10,11 @@ class EventList extends Component {
       <div>
         <h1>Event list</h1>
         {events.map(event => (
-          <EventListItem onEventEdit={this.props.onEventEdit} key={event.id} event={event} />
+          <EventListItem
+              onEventDelete={this.props.onEventDelete}
+              onEventOpen={this.props.onEventOpen}
+              key={event.id}
+              event={event} />
         ))}
       </div>
     );
