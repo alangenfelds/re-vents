@@ -15,7 +15,7 @@ class EventListItem extends Component {
             <Item.Content>
               <Item.Header as="a">{event.title}</Item.Header>
               <Item.Description>
-                Hosted by <a>hosted by</a>
+                Hosted by <a href="/">hosted by</a>
               </Item.Description>
             </Item.Content>
           </Item>
@@ -37,7 +37,7 @@ class EventListItem extends Component {
       <Segment clearing>
       <span>{event.description}</span>
         <Button onClick={this.props.onEventOpen(event)} as="a" color="teal" floated="right" content="View" />
-          <Button onClick={this.props.onEventDelete(event.id)} as="a" color="red" floated="right" content="Delete" />
+          <Button onClick={() => this.props.onEventDelete(event.id)} as="a" color="red" floated="right" content="Delete" />
       </Segment>
     </Segment.Group>
     )
