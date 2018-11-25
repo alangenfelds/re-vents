@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f19bbbf-51ed-4ffe-8f1b-85e88f3100a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/features/event/EventDetailed/EventDetailedPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/event/EventDashboard/EventDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/event/EventDashboard/EventDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/event/EventList/EventListItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/event/EventList/EventListItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Testarea/testReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Testarea/testReducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -199,6 +196,7 @@
       <workItem from="1542948717546" duration="2907000" />
       <workItem from="1543042467486" duration="686000" />
       <workItem from="1543047016217" duration="3791000" />
+      <workItem from="1543124733802" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1542658393553</created>
@@ -225,10 +223,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11114000" />
+    <option name="totallyTimeSpent" value="11119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="0" width="1280" height="1040" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24534413" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
