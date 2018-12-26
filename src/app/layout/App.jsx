@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "semantic-ui-react";
+import { Container, Modal } from "semantic-ui-react";
 import { Route, Switch } from "react-router-dom";
 
 import NavBar from "../../features/nav/navBar/NavBar";
@@ -11,11 +11,13 @@ import UserDetailedPage from "../../features/user/UserDetailed/UserDetailedPage"
 import PeopleDashboard from "../../features/user/PeopleDashboard/PeopleDashboard";
 import SettingsDashboard from "../../features/user/Settings/SettingsDashboard";
 import TestComponent from '../../features/Testarea/TestCompoenent'
+import ModalManager from '../../features/modals/ModalMananger';
 
 class App extends Component {
   render() {
     return (
       <div>
+        <ModalManager />
         <Switch>
           <Route exact path="/" component={HomePage} />
         </Switch>

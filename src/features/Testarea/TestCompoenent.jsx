@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Icon } from "semantic-ui-react";
-import GoogleMapReact from "google-map-react";
+import { Button } from "semantic-ui-react";
+// import GoogleMapReact from "google-map-react";
 
 import Script from "react-load-script";
 import PlacesAutocomplete, {
@@ -10,8 +10,9 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 import { incrementCounter, decrementCounter } from "./testActions";
+import { openModal } from '../modals/modalActions'
 
-const Marker = () => <Icon name='marker' size='big' color='red' />;
+// const Marker = () => <Icon name='marker' size='big' color='red' />;
 
 class TestCompoenent extends Component {
 
@@ -48,7 +49,7 @@ class TestCompoenent extends Component {
   };
 
   render() {
-    const { incrementCounter, decrementCounter, answer } = this.props;
+    const { incrementCounter, decrementCounter, answer, openModal } = this.props;
     const inputProps = {
       value: this.state.address,
       onChange: this.onChange
@@ -63,6 +64,7 @@ class TestCompoenent extends Component {
         <h3>The answer is {answer}</h3>
         <Button onClick={incrementCounter} color="green" content="Increment" />
         <Button onClick={decrementCounter} color="red" content="Decrement" />
+        <Button onClick={() => openModal('TestModal', {data: 43})} color="teal" content="Open Modal" />
         <form onSubmit={this.handleFormSubmit}>
           {this.state.scriptLoaded && (
             <PlacesAutocomplete inputProps={inputProps} />
@@ -71,7 +73,7 @@ class TestCompoenent extends Component {
         </form>
 
         {/* Important! Always set the container height explicitly */}
-        <div style={{ height: "300px", width: "100%" }}>
+        {/* <div style={{ height: "300px", width: "100%" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: "AIzaSyD4Tl5KFkHBW0QcjdLBW-L-xJvYGbd_-LU"
@@ -85,7 +87,7 @@ class TestCompoenent extends Component {
               text="My Marker"
             />
           </GoogleMapReact>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -97,7 +99,8 @@ const mapStateToProps = state => ({
 
 const actions = {
   incrementCounter,
-  decrementCounter
+  decrementCounter,
+  openModal
 };
 
 export default connect(
