@@ -9,7 +9,7 @@ import PlacesAutocomplete, {
   getLatLng
 } from "react-places-autocomplete";
 
-import { incrementCounter, decrementCounter } from "./testActions";
+import { incrementCounter, decrementCounter, incrementAsync, decrementAsync } from "./testActions";
 import { openModal } from '../modals/modalActions'
 
 // const Marker = () => <Icon name='marker' size='big' color='red' />;
@@ -49,7 +49,7 @@ class TestCompoenent extends Component {
   };
 
   render() {
-    const { incrementCounter, decrementCounter, answer, openModal } = this.props;
+    const { incrementCounter, decrementCounter, incrementAsync, decrementAsync, loading, answer, openModal } = this.props;
     const inputProps = {
       value: this.state.address,
       onChange: this.onChange
@@ -62,8 +62,8 @@ class TestCompoenent extends Component {
         />
         <h1>Test Area</h1>
         <h3>The answer is {answer}</h3>
-        <Button onClick={incrementCounter} color="green" content="Increment" />
-        <Button onClick={decrementCounter} color="red" content="Decrement" />
+        <Button loading={loading} onClick={incrementAsync} color="green" content="Increment" />
+        <Button loading={loading} onClick={decrementAsync} color="red" content="Decrement" />
         <Button onClick={() => openModal('TestModal', {data: 43})} color="teal" content="Open Modal" />
         <form onSubmit={this.handleFormSubmit}>
           {this.state.scriptLoaded && (
@@ -94,12 +94,15 @@ class TestCompoenent extends Component {
 }
 
 const mapStateToProps = state => ({
-  answer: state.test.answer
+  answer: state.test.answer,
+  loading: state.test.loading,
 });
 
 const actions = {
   incrementCounter,
   decrementCounter,
+  incrementAsync,
+  decrementAsync,
   openModal
 };
 
