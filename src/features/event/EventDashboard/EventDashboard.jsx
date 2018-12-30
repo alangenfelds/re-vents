@@ -4,28 +4,31 @@ import { Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import EventList from "../../event/EventList/EventList";
-import LoadingComponent from '../../../app/layout/LoadingComponent';
+import EventActivity from "../../event/EventActivity/EventActivity";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { deleteEvent } from "../eventActions";
 
 class EventDashboard extends Component {
-
   handleDeleteEvent = eventId => {
     this.props.deleteEvent(eventId);
   };
 
   render() {
     const { events, loading } = this.props;
-    if (loading) return <LoadingComponent inverted/>
+    if (loading) return <LoadingComponent inverted />;
     return (
       <Grid>
         <Grid.Column width={10}>
-         { events &&  <EventList
-            onEventDelete={this.handleDeleteEvent}
-            // onEventOpen={this.handleOpenEvent}
-            events={events}
-          /> }
+          {events && (
+            <EventList
+              onEventDelete={this.handleDeleteEvent}
+              // onEventOpen={this.handleOpenEvent}
+              events={events}
+            />
+          )}
         </Grid.Column>
         <Grid.Column width={6}>
+          <EventActivity />
         </Grid.Column>
       </Grid>
     );
@@ -35,12 +38,12 @@ class EventDashboard extends Component {
 const mapStateToProps = state => {
   return {
     events: state.eventsReducer.events,
-    loading: state.async.loading,
+    loading: state.async.loading
   };
 };
 
 const actions = {
-  deleteEvent,
+  deleteEvent
 };
 
 export default connect(

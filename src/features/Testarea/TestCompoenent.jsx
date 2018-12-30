@@ -49,7 +49,7 @@ class TestCompoenent extends Component {
   };
 
   render() {
-    const { incrementCounter, decrementCounter, incrementAsync, decrementAsync, loading, answer, openModal } = this.props;
+    const { incrementAsync, decrementAsync, loading, answer, openModal } = this.props;
     const inputProps = {
       value: this.state.address,
       onChange: this.onChange

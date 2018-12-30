@@ -6,21 +6,25 @@ import EventDetailedHeader from "./EventDetailedHeader";
 import EventDetailedInfo from "./EventDetailedInfo";
 import EventDetailedChat from "./EventDetailedChat";
 import EventDetailedSidebar from "./EventDetailedSidebar";
+import LoadingComponent from '../../../app/layout/LoadingComponent';
 
 const mapState = (state, ownProps) => {
+
   const eventId = ownProps.match.params.id;
   let event = {};
 
-  if (eventId && state.eventsReducer.events.length > 0) {
+  if (eventId && state.eventsReducer.events && state.eventsReducer.events.length > 0) {
     event = state.eventsReducer.events.filter (event => event.id === eventId)[0];
   }
 
   return {
-    event
+    event,
+    loading: state.async.loading,
   }
 }
 
-const EventDetailedPage = ({ event }) => {
+const EventDetailedPage = ({ event, loading }) => {
+  if (loading) return <LoadingComponent inverted/>
   return (
     <Grid>
       <Grid.Column width={10}>
