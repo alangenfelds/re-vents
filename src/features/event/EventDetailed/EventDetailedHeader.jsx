@@ -17,6 +17,7 @@ const eventImageTextStyle = {
 };
 
 const EventDetailedHeader = ({ event }) => {
+  if (!event) return;
   return (
    <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
@@ -33,7 +34,7 @@ const EventDetailedHeader = ({ event }) => {
                   content={event.title}
                   style={{ color: 'white' }}
                 />
-                <p>{format(event.date,'Do MMMM')} at {' '} {format(event.date, 'HH:mm')}</p>
+                <p>{format(event.date.toDate(),'Do MMMM')} at {' '} {format(event.date.toDate(), 'HH:mm')}</p>
                 <p>
                   Hosted by <strong>{event.hostedBy}</strong>
                 </p>

@@ -25,8 +25,8 @@ const mapStateToProps = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
   let event = {};
 
-  if (eventId && state.eventsReducer.events.length > 0) {
-    event = state.eventsReducer.events.filter(event => event.id === eventId)[0];
+  if (eventId && state.firestore.ordered.events && state.firestore.ordered.events.length > 0) {
+    event = state.firestore.ordered.events.filter(event => event.id === eventId)[0];
   }
 
   return {

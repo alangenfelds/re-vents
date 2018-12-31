@@ -7,11 +7,12 @@ class EventList extends Component {
     const { events } = this.props;
     return (
       <div>
-        {events.map(event => (
+        {events && events.map(event => (
           <EventListItem
-              onEventDelete={this.props.onEventDelete}
-              key={event.id}
-              event={event} />
+            onEventDelete={this.props.onEventDelete}
+            key={event.id}
+            event={event}
+          />
         ))}
       </div>
     );

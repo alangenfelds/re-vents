@@ -24,6 +24,7 @@ class EventDetailedInfo extends React.Component {
   render() {
     const { event } = this.props;
     const { showMap } = this.state;
+    if (!event) return;
     return (
       <Segment.Group>
         <Segment attached="top">
@@ -42,7 +43,7 @@ class EventDetailedInfo extends React.Component {
               <Icon name="calendar" size="large" color="teal" />
             </Grid.Column>
             <Grid.Column width={15}>
-              <span>{format(event.date,'Do MMM')} at {' '} {format(event.date, 'hh:mm')}</span>
+              <span>{format(event.date.toDate(),'Do MMM')} at {' '} {format(event.date.toDate(), 'hh:mm')}</span>
             </Grid.Column>
           </Grid>
         </Segment>
