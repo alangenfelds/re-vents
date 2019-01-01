@@ -28,7 +28,8 @@ export const registerUser = user => async (
   const firestore = getFirestore();
   try {
     // 1. create user in auth
-    let createdUser = await firebase
+    // let createdUser = 
+    await firebase
       .auth()
       .createUserWithEmailAndPassword(user.email, user.password);
     // console.log('createdUser', createdUser);

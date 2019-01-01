@@ -2,15 +2,18 @@ import React from "react";
 import { Form, Label } from "semantic-ui-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import moment from 'moment';
+import moment from 'moment';
 
 const DateInput = ({
-  input: {value, onChange, ...restInput},
+  input: {value, onChange, onBlur, ...restInput},
   width,
   placeholder,
   meta: { touched, error },
   ...rest
 }) => {
+  if (value) {
+    value = moment(value, 'X').toDate();
+  } 
   return (
     <Form.Field error={touched && !!error} width={width}>
       <DatePicker
@@ -18,6 +21,7 @@ const DateInput = ({
         placeholderText={placeholder}
         selected={value ? new Date(value) : null}
         onChange={onChange}
+        onBlur={ () => onBlur()}
         {...restInput}
       />
       {touched && error && (
