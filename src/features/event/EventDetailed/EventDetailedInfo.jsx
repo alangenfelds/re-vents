@@ -43,7 +43,7 @@ class EventDetailedInfo extends React.Component {
               <Icon name="calendar" size="large" color="teal" />
             </Grid.Column>
             <Grid.Column width={15}>
-              <span>{format(event.date.toDate(),'Do MMM')} at {' '} {format(event.date.toDate(), 'hh:mm')}</span>
+              {event.date && <span>{format(event.date.toDate(),'Do MMM')} at {' '} {format(event.date.toDate(), 'hh:mm')}</span>}
             </Grid.Column>
           </Grid>
         </Segment>

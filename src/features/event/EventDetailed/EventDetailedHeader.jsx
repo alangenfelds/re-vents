@@ -34,7 +34,7 @@ const EventDetailedHeader = ({ event }) => {
                   content={event.title}
                   style={{ color: 'white' }}
                 />
-                <p>{format(event.date.toDate(),'Do MMMM')} at {' '} {format(event.date.toDate(), 'HH:mm')}</p>
+                {event.date && <p>{format(event.date.toDate(),'Do MMMM')} at {' '} {format(event.date.toDate(), 'HH:mm')}</p>}
                 <p>
                   Hosted by <strong>{event.hostedBy}</strong>
                 </p>

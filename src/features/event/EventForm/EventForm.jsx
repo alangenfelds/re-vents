@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Segment, Form, Button, Grid, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
-import cuid from "cuid";
 import Script from "react-load-script";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 // import moment from "moment";
@@ -98,22 +97,12 @@ class EventForm extends Component {
   };
 
   onFormSubmit = values => {
-    // event.preventDefault();
-    // console.log(this.state.event)
-    // values.date = moment(values.date).format();
-    // values.date = new Date(values.date);
     values.venueLatLng = this.state.venueLatLng;
     if (this.props.initialValues.id) {
       this.props.updateEvent(values);
       this.props.history.goBack();
     } else {
-      const newEvent = {
-        ...values,
-        id: cuid(),
-        hostPhotoUrl: '/assets/user.png',
-        hostedBy: 'Bob',
-      }
-      this.props.createEvent(newEvent);
+      this.props.createEvent(values);
       this.props.history.push("/events/");
     }
   };

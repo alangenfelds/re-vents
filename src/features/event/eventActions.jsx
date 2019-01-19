@@ -1,5 +1,7 @@
 import { toastr } from "react-redux-toastr";
 
+import { createNewEvent } from './../../app/common/util/helpers'
+
 import {
   CREATE_EVENT,
   UPDATE_EVENT,
@@ -36,13 +38,26 @@ export const fetchEvents = events => {
   };
 };
 
-export const createEvent = newEvent => {
-  return async dispatch => {
+export const createEvent = event => {
+  return async (dispatch, getState, {getFirestore, getFirebase}) => {
+    const firestore = getFirestore();
+    const firebase = getFirebase();
+    // const user = firestore.auth().currentUser;
+    const user = firebase.auth().currentUser;
+    const photoURL = getState().firebase.profile.photoURL;
+    let newEvent = createNewEvent(user, photoURL, event);
     try {
-      dispatch({
-        type: CREATE_EVENT,
-        payload: { newEvent }
-      });
+      let createdEvent = await firestore.add(`events`, newEvent);
+      await firestore.set(`event_attendee/${createdEvent.id}_${user.uid}`, {
+        eventId: createdEvent.id,
+        userId: user.uid,
+        eventDate: event.date,
+        host: true
+      })
+      // dispatch({
+      //   type: CREATE_EVENT,
+      //   payload: { newEvent }
+      // });
       toastr.success("Success!", "Event has been created");
     } catch (err) {
       console.log(err);
