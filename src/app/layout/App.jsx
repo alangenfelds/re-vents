@@ -37,6 +37,7 @@ const sub = (a, b) => a - b;
 const mul = (a, b) => a * b;
 
 const binary = (a, b) => {
+  // binary function - means it takes 2 arguments
   return a * b;
 };
 
