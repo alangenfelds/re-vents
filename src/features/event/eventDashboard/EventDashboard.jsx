@@ -3,8 +3,8 @@ import { Grid } from "semantic-ui-react";
 import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 
-import EventList from "../../event/eventList/EventList";
-import EventActivity from "../../event/eventActivity/EventActivity";
+import EventList from "../../event/EventList/EventList";
+import EventActivity from "../../event/EventActivity/EventActivity";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { deleteEvent } from "../eventActions";
 
