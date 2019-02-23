@@ -1,4 +1,5 @@
 import { toastr } from "react-redux-toastr";
+import moment from 'moment';
 
 import { createNewEvent } from './../../app/common/util/helpers'
 
@@ -73,18 +74,17 @@ export const createEvent = event => {
 };
 
 export const updateEvent = updatedEvent => {
-  // return {
-  //     type: UPDATE_EVENT,
-  //     payload: {
-  //         updatedEvent: updatedEvent
-  //     }
-  // }
-  return async dispatch => {
+  return async (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    if (updatedEvent.date !== getState().firestore.ordered.events[0].date) {
+      updatedEvent.date = moment(updatedEvent.date).toDate();
+    }
     try {
-      dispatch({
-        type: UPDATE_EVENT,
-        payload: { updatedEvent }
-      });
+      // dispatch({
+      //   type: UPDATE_EVENT,
+      //   payload: { updatedEvent }
+      // });
+      await firestore.update(`/events/${updateEvent.id}`, updateEvent)
       toastr.success("Success!", "Event has been updated");
     } catch (err) {
       console.log(err);

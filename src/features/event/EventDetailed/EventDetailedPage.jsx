@@ -9,6 +9,7 @@ import EventDetailedInfo from "./EventDetailedInfo";
 import EventDetailedChat from "./EventDetailedChat";
 import EventDetailedSidebar from "./EventDetailedSidebar";
 import LoadingComponent from '../../../app/layout/LoadingComponent';
+import { objectToArray } from '../../../app/common/util/helpers'
 
 // const mapState = (state, ownProps) => {
 
@@ -51,6 +52,7 @@ class EventDetailedPage extends Component {
   render() {
   const { event, loading } = this.props; 
   if (loading) return <LoadingComponent inverted/>
+  const attendees = event && event.attendees && objectToArray(event.attendees);
   return (
     <Grid>
       <Grid.Column width={10}>
@@ -59,7 +61,7 @@ class EventDetailedPage extends Component {
         <EventDetailedChat />
       </Grid.Column>
       <Grid.Column width={6}>
-        <EventDetailedSidebar attendees={event.attendees}/>
+        <EventDetailedSidebar attendees={attendees}/>
       </Grid.Column>
     </Grid>
   );
